@@ -1,0 +1,38 @@
+name: Nightly Benchmark
+
+on:
+  schedule:
+    - cron: "0 2 * * *"  # Run nightly at 02:00 UTC
+  workflow_dispatch:      # Allow manual trigger
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: "backend/requirements-dev.txt"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install -U pip
+          pip install -r backend/requirements-dev.txt
+          pip install -e backend
+
+      - name: Run benchmark (click: scale, doc2code)
+        env:
+          PYTHONPATH: backend
+        run: |
+          python -m codeworld.evaluation.suite --repos click --steps scale,doc2code --out results/nightly --work suite_work
+
+      - name: Upload benchmark report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nightly-benchmark-report
+          path: results/nightly/report.md
+          if-no-files-found: error
+

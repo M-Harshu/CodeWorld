@@ -1,0 +1,12 @@
+# Better semantic search (CPU works; first run downloads ~550 MB for CodeRankEmbed):
+sentence-transformers>=3.0
+# Then set in .env:  CODEWORLD_EMBED_BACKEND=st   CODEWORLD_EMBED_MODEL=nomic-ai/CodeRankEmbed
+einops>=0.7
+
+# Figures for the experiment suite (optional)
+matplotlib>=3.8
+
+# Add this after sentence-transformers in requirements-optional.txt
+# CPU-friendly embedding backend (requires PyTorch)
+faiss-cpu>=1.8
+torch>=2.0

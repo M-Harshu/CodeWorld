@@ -1,0 +1,12 @@
+[
+ {"id":"q1","type":"flow","question":"How does a user log in and how is the password verified?","gold_files":["app/services/auth_service.py","app/utils/security.py","app/api/auth.py"],"gold_symbols":["AuthService.login","verify_password","hash_password"],"gold_keywords":["token","password"]},
+ {"id":"q2","type":"locate","question":"Where are users stored in the database?","gold_files":["app/repositories/user_repository.py"],"gold_symbols":["UserRepository.add","UserRepository.find_by_email"],"gold_keywords":["sqlite","users"]},
+ {"id":"q3","type":"callers","question":"Which functions call hash_password?","gold_files":["app/services/auth_service.py","app/utils/security.py"],"gold_symbols":["AuthService.register","verify_password"],"gold_keywords":["register"]},
+ {"id":"q4","type":"impact","question":"What breaks if I change verify_password?","gold_files":["app/services/auth_service.py","app/api/auth.py"],"gold_symbols":["AuthService.login","login"],"gold_keywords":["login"]},
+ {"id":"q5","type":"explain","question":"How are orders created and saved?","gold_files":["app/services/order_service.py","app/repositories/order_repository.py","app/api/orders.py"],"gold_symbols":["OrderService.place_order","OrderRepository.save","create_order"],"gold_keywords":["order"]},
+ {"id":"q6","type":"locate","question":"Where is the session token generated?","gold_files":["app/utils/security.py"],"gold_symbols":["make_token"],"gold_keywords":["token"]},
+ {"id":"q7","type":"locate","question":"Which endpoint runs shell reports?","gold_files":["app/main.py","app/utils/legacy.py"],"gold_symbols":["report","run_report"],"gold_keywords":["report"]},
+ {"id":"q8","type":"explain","question":"How is the cart total computed in the web part?","gold_files":["web/lib/cart.js","web/lib/pricing.js"],"gold_symbols":["cartTotal","addItem","Pricing.price"],"gold_keywords":["price"]},
+ {"id":"q9","type":"callers","question":"What calls get_connection?","gold_files":["app/api/deps.py","app/api/orders.py"],"gold_symbols":["get_auth_service","create_order","list_orders"],"gold_keywords":["connection"]},
+ {"id":"q10","type":"explain","question":"What is the User model and which code creates users?","gold_files":["app/models/user.py","app/repositories/user_repository.py"],"gold_symbols":["User","UserRepository.add"],"gold_keywords":["user"]}
+]

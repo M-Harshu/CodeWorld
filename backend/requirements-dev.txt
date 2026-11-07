@@ -1,0 +1,5 @@
+-r requirements.txt
+pytest>=8.0
+ruff>=0.1.0
+playwright>=1.45     # only for UI smoke tests (optional)
+matplotlib>=3.8      # figures from the experiment suite (optional)

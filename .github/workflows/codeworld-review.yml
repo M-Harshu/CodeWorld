@@ -1,0 +1,40 @@
+# AI-PR guardrail for YOUR repository. Copy this file into <your-repo>/.github/workflows/.
+# NOTE: this template was written against the documented behaviour of the CLI but has not been run on GitHub's runners.
+name: CodeWorld PR guardrail
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0              # full history: co-change + diff against the base branch
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install CodeWorld
+        run: pip install -r backend/requirements.txt
+      - name: Run guardrail (the checked-out tree IS the PR head, so no patching is needed)
+        id: review
+        env:
+          PYTHONPATH: ${{ github.workspace }}/backend
+          CODEWORLD_DATA_DIR: /tmp/cw-data
+        run: |
+          python -m codeworld review . --base "origin/${{ github.base_ref }}" --head HEAD --fail-on never --output review.md
+          if python -m codeworld review . --base "origin/${{ github.base_ref }}" --head HEAD --fail-on high >/dev/null; then echo "failed=false" >> $GITHUB_OUTPUT; else echo "failed=true" >> $GITHUB_OUTPUT; fi
+      - name: Comment on the PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = require('fs').readFileSync('review.md', 'utf8');
+            await github.rest.issues.createComment({ ...context.repo, issue_number: context.issue.number, body });
+      - name: Fail the check on high-severity findings
+        if: steps.review.outputs.failed == 'true'
+        run: exit 1

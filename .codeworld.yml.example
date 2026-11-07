@@ -1,0 +1,10 @@
+# Put a file named .codeworld.yml in the ROOT of the repository you analyse to define its architecture rules.
+# Layers run from highest (entry points) to lowest (infrastructure). A lower layer must not import a higher one.
+layers:
+  - [api, routes, controllers]
+  - [services]
+  - [repositories, models]
+  - [utils]
+# Extra forbidden dependencies (path prefixes)
+forbid:
+  - {from: app/domain, to: app/api}

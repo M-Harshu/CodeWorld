@@ -1,0 +1,23 @@
+# Comments on every new issue with the files/functions it probably concerns. Copy into <your-repo>/.github/workflows/.
+# Template - written against the documented CLI, test on a throwaway repository first.
+name: CodeWorld issue triage
+on:
+  issues:
+    types: [opened]
+permissions:
+  issues: write
+  contents: read
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r backend/requirements.txt
+      - name: Suggest suspects
+        env:
+          PYTHONPATH: ${{ github.workspace }}/backend
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CODEWORLD_DATA_DIR: /tmp/cw-data
+        run: python -m codeworld github issue "${{ github.repository }}" "${{ github.event.issue.number }}" --post

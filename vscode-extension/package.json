@@ -1,0 +1,39 @@
+{
+  "name": "codeworld",
+  "displayName": "CodeWorld",
+  "description": "Graph-RAG code intelligence in your editor: ask your codebase, see callers/tests/impact above every function, review changes with the AI-PR guardrail, propose patches.",
+  "version": "1.0.0",
+  "publisher": "codeworld",
+  "license": "MIT",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Other", "Programming Languages"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "codeworld.selectRepo", "title": "CodeWorld: Select repository" },
+      { "command": "codeworld.ask", "title": "CodeWorld: Ask the codebase" },
+      { "command": "codeworld.impactAtCursor", "title": "CodeWorld: Impact of symbol at cursor" },
+      { "command": "codeworld.reviewChanges", "title": "CodeWorld: Review my uncommitted changes (PR guardrail)" },
+      { "command": "codeworld.proposePatch", "title": "CodeWorld: Propose a patch for a task (needs LLM)" },
+      { "command": "codeworld.reindex", "title": "CodeWorld: Re-index repository" },
+      { "command": "codeworld.openMap", "title": "CodeWorld: Open code map in browser" },
+      { "command": "codeworld.openLocation", "title": "CodeWorld: Open location" }
+    ],
+    "menus": {
+      "editor/context": [
+        { "command": "codeworld.impactAtCursor", "group": "codeworld@1", "when": "editorHasSelection || editorTextFocus" },
+        { "command": "codeworld.openMap", "group": "codeworld@2" }
+      ]
+    },
+    "configuration": {
+      "title": "CodeWorld",
+      "properties": {
+        "codeworld.serverUrl": { "type": "string", "default": "http://localhost:8000", "description": "URL of the running CodeWorld server." },
+        "codeworld.apiToken": { "type": "string", "default": "", "description": "API token if the server was started with CODEWORLD_API_TOKEN." },
+        "codeworld.repoId": { "type": "string", "default": "", "description": "Repository id (use 'CodeWorld: Select repository')." },
+        "codeworld.codeLens": { "type": "boolean", "default": true, "description": "Show callers / tests / risk above functions." }
+      }
+    }
+  }
+}

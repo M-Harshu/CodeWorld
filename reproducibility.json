@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "project": "CodeWorld",
+  "version": "1.0.0",
+  "date": "2026-11-03",
+  "random_seeds": {
+    "benchmark_split_seed": 42,
+    "bootstrap_ci_seed": 42,
+    "defect_injection_seed": 1337
+  },
+  "pinned_repositories": [
+    {
+      "name": "click",
+      "commit": "2247b35e05a397974558be859ee42d3809ef86a4",
+      "url": "https://github.com/pallets/click",
+      "loc": 30464,
+      "files": 86
+    },
+    {
+      "name": "flask",
+      "commit": "49943b5a7dbf2beeb5f242b6a71ab11e3b6eb4e4",
+      "url": "https://github.com/pallets/flask",
+      "loc": 18472,
+      "files": 80
+    },
+    {
+      "name": "jinja",
+      "commit": "5ef701128a38520bfd650119859fdfb74eb73f3c",
+      "url": "https://github.com/pallets/jinja",
+      "loc": 22934,
+      "files": 59
+    },
+    {
+      "name": "requests",
+      "commit": "3c7baaa09cc36ae42d25d194c6f50b4f3b7305d2",
+      "url": "https://github.com/psf/requests",
+      "loc": 12068,
+      "files": 36
+    },
+    {
+      "name": "rich",
+      "commit": "9d8f9a37e96b7978ec45f206677f5a8a1ad3c563",
+      "url": "https://github.com/Textualize/rich",
+      "loc": 52077,
+      "files": 211
+    }
+  ],
+  "hardware_specifications": {
+    "workstation_1_windows": {
+      "os": "Windows 10 Enterprise / Pro (64-bit)",
+      "cpu": "Intel Core i3-1115G4 @ 3.00GHz (2 cores, 4 threads)",
+      "ram": "8.0 GB DDR4",
+      "disk": "NVMe SSD",
+      "python": "3.11.9",
+      "notes": "Low-end developer laptop baseline"
+    },
+    "workstation_2_linux": {
+      "os": "Ubuntu 22.04 LTS (Kernel 6.18.44-fc-v185)",
+      "cpu": "Intel Xeon / Core i7 @ 3.20GHz",
+      "ram": "16.0 GB DDR4",
+      "disk": "SATA SSD",
+      "python": "3.12.3",
+      "notes": "CI and Linux benchmark baseline"
+    }
+  },
+  "containerization": {
+    "dockerfile": "Dockerfile",
+    "safe_tracing_command": "docker run --rm -v $(pwd):/workspace codeworld:latest python -m codeworld.evaluation.suite --repos click --steps callgraph"
+  }
+}
+

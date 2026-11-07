@@ -1,0 +1,112 @@
+[
+  {
+    "id": "d0",
+    "type": "doc2code",
+    "question": "the final :class:`ParamType` for this option.",
+    "gold_symbols": [
+      "Option._pick_type"
+    ],
+    "gold_files": [
+      "src/click/core.py"
+    ]
+  },
+  {
+    "id": "d1",
+    "type": "doc2code",
+    "question": "Produce the shell script that defines the completion function.",
+    "gold_symbols": [
+      "ShellComplete.source"
+    ],
+    "gold_files": [
+      "src/click/shell_completion.py"
+    ]
+  },
+  {
+    "id": "d2",
+    "type": "doc2code",
+    "question": "a as a string for display.",
+    "gold_symbols": [
+      "format_filename"
+    ],
+    "gold_files": [
+      "src/click/utils.py"
+    ]
+  },
+  {
+    "id": "d3",
+    "type": "doc2code",
+    "question": "Writes all into the formatter, if at least one is documented.",
+    "gold_symbols": [
+      "Command.format_arguments"
+    ],
+    "gold_files": [
+      "src/click/core.py"
+    ]
+  },
+  {
+    "id": "d4",
+    "type": "doc2code",
+    "question": "Returns the for the .",
+    "gold_symbols": [
+      "Command.get_help_option_names"
+    ],
+    "gold_files": [
+      "src/click/core.py"
+    ]
+  },
+  {
+    "id": "d5",
+    "type": "doc2code",
+    "question": "Returns a condensed version of string.",
+    "gold_symbols": [
+      "_make_default_short_help"
+    ],
+    "gold_files": [
+      "src/click/utils.py"
+    ]
+  },
+  {
+    "id": "d6",
+    "type": "doc2code",
+    "question": "Callback that is used whenever -- is passed.",
+    "gold_symbols": [
+      "read_config"
+    ],
+    "gold_files": [
+      "examples/aliases/aliases.py"
+    ]
+  },
+  {
+    "id": "d7",
+    "type": "doc2code",
+    "question": "For a given value from the parser, normalize it and find its matching normalized value in the list of choices.",
+    "gold_symbols": [
+      "Choice.convert"
+    ],
+    "gold_files": [
+      "src/click/types.py"
+    ]
+  },
+  {
+    "id": "d8",
+    "type": "doc2code",
+    "question": "Convert a string to a boolean value.",
+    "gold_symbols": [
+      "BoolParamType.str_to_bool"
+    ],
+    "gold_files": [
+      "src/click/types.py"
+    ]
+  },
+  {
+    "id": "d9",
+    "type": "doc2code",
+    "question": "Returns the left column of this parameter's record.",
+    "gold_symbols": [
+      "Parameter.get_help_spec"
+    ],
+    "gold_files": [
+      "src/click/core.py"
+    ]
+  }
+]

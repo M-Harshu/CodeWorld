@@ -1,0 +1,104 @@
+[
+  {
+    "name": "click",
+    "url": "https://github.com/pallets/click",
+    "py": "src/click",
+    "install": [
+      "-e",
+      "."
+    ],
+    "trace_files": [
+      "tests/test_basic.py",
+      "tests/test_options.py",
+      "tests/test_arguments.py",
+      "tests/test_commands.py",
+      "tests/test_utils.py",
+      "tests/test_formatting.py",
+      "tests/test_parser.py"
+    ]
+  },
+  {
+    "name": "flask",
+    "url": "https://github.com/pallets/flask",
+    "py": "src/flask",
+    "install": [
+      "-e",
+      "."
+    ],
+    "trace_files": [
+      "tests/test_basic.py",
+      "tests/test_blueprints.py",
+      "tests/test_helpers.py",
+      "tests/test_config.py",
+      "tests/test_json.py"
+    ]
+  },
+  {
+    "name": "jinja",
+    "url": "https://github.com/pallets/jinja",
+    "py": "src/jinja2",
+    "install": [
+      "-e",
+      ".",
+      "trio"
+    ],
+    "trace_files": [
+      "tests/test_api.py",
+      "tests/test_core_tags.py",
+      "tests/test_filters.py",
+      "tests/test_lexnparse.py",
+      "tests/test_regression.py"
+    ]
+  },
+  {
+    "name": "requests",
+    "url": "https://github.com/psf/requests",
+    "py": "src/requests",
+    "install": [
+      "-e",
+      ".",
+      "pytest-httpbin"
+    ],
+    "trace_files": [
+      "tests/test_utils.py",
+      "tests/test_structures.py",
+      "tests/test_hooks.py",
+      "tests/test_lowlevel.py"
+    ]
+  },
+  {
+    "name": "rich",
+    "url": "https://github.com/Textualize/rich",
+    "py": "rich",
+    "install": [
+      "-e",
+      "."
+    ],
+    "trace_files": [
+      "tests/test_text.py",
+      "tests/test_style.py",
+      "tests/test_table.py",
+      "tests/test_console.py",
+      "tests/test_markup.py",
+      "tests/test_segment.py"
+    ]
+  },
+  {
+    "name": "express",
+    "url": "https://github.com/expressjs/express",
+    "js": "lib",
+    "install": []
+  },
+  {
+    "name": "axios",
+    "url": "https://github.com/axios/axios",
+    "js": "lib",
+    "install": []
+  },
+  {
+    "name": "dayjs",
+    "url": "https://github.com/iamkun/dayjs",
+    "js": "src",
+    "install": []
+  }
+]
